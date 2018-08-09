@@ -1,7 +1,6 @@
-function startMenu(){
-	function create(){
+var startUp = {
+	create: function(){
 		console.log('create');
-		game.physics.startSystem(Phaser.Physics.ARCADE); //adds game physics to the game
 		game.world.setBounds(0, -200, 800, 800) //sets world bounds (starting width, starting height, max width, max height)
 
 		//game images
@@ -48,6 +47,19 @@ function startMenu(){
 		tubers.createMultiple(20, 'tubby');
 		tubers.createMultiple(20, 'wifey');
 		game.time.events.loop(Phaser.Timer.SECOND * 3, tuberCreate);
+		function tuberCreate(){
+			startWidth = game.rnd.between(20, 580) //chooses a random number between 20 and 580
+			randX = game.rnd.between(-75, 75);
+			randY = game.rnd.between(-5, -100);
+			watchOut = tubers.getFirstExists(false); //tells game to treat each instance of group as individual
+			watchOut.reset(startWidth, 600); //place a new sprite from group on (x,y)
+			watchOut.body.velocity.x =  randX; //gives a random x speed
+			watchOut.body.velocity.y =  randY;//give a random y speed
+			watchOut.scale.setTo(2); //doubles size of each sprite
+			watchOut.body.setSize(10, 10, 10, 10); //adjusts collision box
+			watchOut.body.bounce.setTo(1,1);
+
+		}
 
 			//Rum for points
 		rum = game.add.group();
@@ -58,6 +70,22 @@ function startMenu(){
 		rum.callAll('animations.add', 'animations', 'drink', rumination, 5, true);
 		rum.callAll('play', 'drink');
 		game.time.events.loop(Phaser.Timer.SECOND * 5, rumCreate);	
+		function rumCreate(){
+			getDrunk = rum.getFirstExists(false); //tells game to treat each instance of rum as individual
+			getDrunk.reset(startWidth, 600); //play a new sprite at (x,y)
+			getDrunk.body.velocity.x = randX;
+			getDrunk.body.velocity.y = randY;
+			getDrunk.animations.play()
+			getDrunk.scale.setTo(2);
+			getDrunk.body.setSize(32, 32, 15, 15);
+		}
+
+			//start buttonstart
+		startButton = game.add.button(300, 400, 'button', startClick, this, 0, 1, 2);
+		function startClick(){
+			startButton.visible =! startButton.visible;
+			game.state.start('game');
+		}
 
 			//collision animation
 		// collide = game.add.sprite(-10, 200, 'collision');	
@@ -82,7 +110,7 @@ function startMenu(){
 		//add camera movement to thrilla
 		game.camera.follow(thrilla);
 
+	}
 
-
-	};
+	
 }

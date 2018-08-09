@@ -1,5 +1,5 @@
-function load(){
-	function preload(){
+var loadUp = {
+	preload: function(){
 		console.log('preload');
 		
 		//loading game images
@@ -17,14 +17,15 @@ function load(){
 		game.load.spritesheet('master', './assets/img/revised--thrilla-master-sheet.png', 64, 64); //standup animation taking frames width and height: 64
 		game.load.spritesheet('rumDrink', './assets/img/rum-sheet.png', 32, 32); //rum animation to be collected for points
 		game.load.spritesheet('collision', './assets/img/collision-sheet.png', 64, 64); //collision animation
+		game.load.spritesheet('button', './assets/img/button-start-spritesheet.png', 196, 70); //start button animation
 
 		//loading game sounds
 		game.load.audio('theme', './assets/audio/funky-surf-music.mp3');
 		game.load.audio('crash', './assets/audio/splash-noise.mp3');
 		game.load.audio('ocean', './assets/audio/Ocean-waves.mp3');
-	};
+	},
 
-	function create(){
+	create: function(){
 		game.state.start('startMenu')
 	}
 	
