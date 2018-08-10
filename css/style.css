@@ -1,7 +1,10 @@
 #title {
 	font-family: 'Permanent Marker', cursive;
+	text-align: center;
 }
 
 #gameboard {
-	
+	text-align: center;
+	width: 800;
+	margin: 0 27%;
 }

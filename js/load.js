@@ -1,6 +1,5 @@
 var loadUp = {
 	preload: function(){
-		console.log('preload');
 		
 		//loading game images
 		game.load.image('sunset', './assets/img/sunset-background.jpg'); //sunset background
