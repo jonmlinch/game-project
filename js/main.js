@@ -1,27 +1,27 @@
 console.log('main.js working')
 
 //global variables
-var startButton;
-var background;
-var ocean;
-var breaker;
-var whitewash;
-var thrilla;
-var tubey;
-var wifey;
-var collide;
-var startWidth;
-var watchOut;
-var randX;
-var randY;
-var tubers;
-var rum;
-var score;
-var getDrunk;
-var backSong;
-var beach;
-var splash;
-var cursors;
+// var startButton;
+// var background;
+// var ocean;
+// var breaker;
+// var whitewash;
+// var thrilla;
+// var tubey;
+// var wifey;
+// var collide;
+// var startWidth;
+// var watchOut;
+// var randX;
+// var randY;
+// var tubers;
+// var rum;
+// var score;
+// var getDrunk;
+// var backSong;
+// var beach;
+// var splash;
+// var cursors;
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameboard');
 

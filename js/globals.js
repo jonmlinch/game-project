@@ -11,6 +11,7 @@ var startWidth;
 var watchOut;
 var randX;
 var randY;
+var startScore;
 var tubers;
 var rum;
 var score;
