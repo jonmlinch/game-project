@@ -97,19 +97,19 @@ function rummyRumRum(){
 	}
 }
 
+function tunes(){
+	backSong = game.add.audio('theme'); //background music
+	beach = game.add.audio('ocean', 0.9);  //ocean crashing for ambiance
+	backSong.play();
+	beach.play();
+};
+
 function theButton(){
 	startButton = game.add.button(300, 400, 'button', startClick, this, 0, 1, 2);
 		function startClick(){
 			startButton.visible =! startButton.visible;
 			game.state.start('game');
 		}
-};
-
-function tunes(){
-	backSong = game.add.audio('theme'); //background music
-	beach = game.add.audio('ocean', 0.9);  //ocean crashing for ambiance
-	backSong.play();
-	beach.play();
 };
 
 function gimmeControl(){

@@ -2,7 +2,7 @@ var winGame = {
 	create: function(){
 	behindYou();
 	theButton();
-	tunes()
+	backSong.pause();
 
 	//add score to game
 	thrilla.score = 100
