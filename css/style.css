@@ -1,3 +1,8 @@
+body {
+	background: url('../assets/img/wrinkled-paper.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
 #title {
 	font-family: 'Permanent Marker', cursive;
 	text-align: center;
