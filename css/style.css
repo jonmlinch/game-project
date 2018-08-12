@@ -1,15 +1,16 @@
 body {
 	background: url('../assets/img/wrinkled-paper.jpg');
-	background-repeat: no-repeat;
-	background-size: 100%;
+/*	background-repeat: no-repeat;
+*/	background-size: 100%;
 }
+
+canvas {
+	margin: 0 auto;
+}
+
 #title {
 	font-family: 'Permanent Marker', cursive;
 	text-align: center;
+	font-size: 60px;
 }
 
-#gameboard {
-	text-align: center;
-	width: 800;
-	margin: 0 27%;
-}
