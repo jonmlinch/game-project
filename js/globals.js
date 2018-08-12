@@ -54,7 +54,7 @@ function gorilla (surf){
 	game.physics.arcade.enable(thrilla); //allows gorilla to move around screen
 	thrilla.outOfBoundsKill = true;
 	thrilla.checkWorldBounds = true;
-	thrilla.score = 90;
+	thrilla.score = 30;
 };
 
 function tubeyTubey(){
@@ -117,17 +117,17 @@ function gimmeControl(){
 };
 
 function keyStrokes(){
-	if(thrilla.score <= 90){
+	if( 10 < thrilla.score <= 90){
 		if(cursors.left.isDown){
-			thrilla.body.velocity.x = -100;
+			thrilla.body.velocity.x = -200;
 			thrilla.animations.play('surfLeft');
 		} 
 		else if (cursors.right.isDown){
-			thrilla.body.velocity.x = 100;
+			thrilla.body.velocity.x = 200;
 			thrilla.animations.play('surfRight');
 		};
 		if(cursors.up.isDown){
-			thrilla.body.velocity.y = -100;
+			thrilla.body.velocity.y = -200;
 			if(thrilla.y <= 250){
 			thrilla.y = 250
 			}
