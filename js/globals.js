@@ -21,37 +21,36 @@ var cursors;
 //"global" functions
 
 function behindYou (){
-	game.world.setBounds(0, 0, 800, 600) //sets world bounds (starting width, starting height, max width, max height)
+	game.world.setBounds(0, 0, 800, 600);
 	game.inputEnabled = true;
 	
 	//game images
-	background = game.add.tileSprite(0, -200, game.width, game.height, 'sunset');  //adds sunset background
-	background.scale.setTo(4) //rescales background
+	background = game.add.tileSprite(0, -200, game.width, game.height, 'sunset');
+	background.scale.setTo(4);
 
-	ocean = game.add.tileSprite(0, 200, game.width, game.height - 200, 'horizon'); //adds ocean on top of sunset to make a horizon
-	ocean.autoScroll(-20, 0) //creates a slow scroll so it appears we move along horizon
+	ocean = game.add.tileSprite(0, 200, game.width, game.height - 200, 'horizon');
+	ocean.autoScroll(-20, 0);
 
-	breaker = game.add.tileSprite(0, 300, game.width, game.height, 'wave'); //adds "surfable" portion of wave
-	breaker.scale.setTo(1, 1.75); //rescales wave to fit canvas
-	breaker.autoScroll(-50, 0); //scrolls wave go simulate movement
+	breaker = game.add.tileSprite(0, 300, game.width, game.height, 'wave');
+	breaker.scale.setTo(1, 1.75);
+	breaker.autoScroll(-50, 0);
 
-	whitewash = game.add.sprite(-5, 300, 'wash'); //adds white wash to right side of screen
-	whitewash.scale.setTo(1.5, 2); //scales whitewash
-	whitewash.animations.add('crash'); //Names the animation "crash"
-	whitewash.animations.play('crash', 10, true); //tells "crash" to play at 10 (fps?). The true loops the animation
-
+	whitewash = game.add.sprite(-5, 300, 'wash');
+	whitewash.scale.setTo(1.5, 2);
+	whitewash.animations.add('crash');
+	whitewash.animations.play('crash', 10, true);
 };
 
 function gorilla (surf){
-	thrilla = game.add.sprite(99, 354, 'master'); //adds paddling sprite to screen
-	thrilla.scale.setTo(1.5); //scales gorilla
-	thrilla.animations.add('padIn', [0,1], 5, true); //names animation "padIn" using the first 2 frames of the sprite sheet, should show paddling
-	thrilla.animations.add('popUp', [0, 1, 2, 3, 4], 5, false); //names animation "popUp" using the first 5 frames of the sprite sheet, should show standup
-	thrilla.animations.add('surfRight', [4, 5], 5, true); //names animation "surfRight" using the 5th and 6th frames of the sprite sheet, should surf right
-	thrilla.animations.add('surfLeft', [6, 7], 5, true); //names animation "surfLeft" using the last 2 frames of the sprite sheet, should surf left
+	thrilla = game.add.sprite(99, 354, 'master');
+	thrilla.scale.setTo(1.5);
+	thrilla.animations.add('padIn', [0,1], 5, true);
+	thrilla.animations.add('popUp', [0, 1, 2, 3, 4], 5, false);
+	thrilla.animations.add('surfRight', [4, 5], 5, true);
+	thrilla.animations.add('surfLeft', [6, 7], 5, true);
 	thrilla.animations.add('wipeout', [8, 9, 10, 11, 13, 14], 5, false);
-	thrilla.animations.play(surf); //tells "padIn" to play at 5 (fps?). The true loops the animation
-	game.physics.arcade.enable(thrilla); //allows gorilla to move around screen
+	thrilla.animations.play(surf);
+	game.physics.arcade.enable(thrilla);
 	thrilla.outOfBoundsKill = true;
 	thrilla.checkWorldBounds = true;
 	thrilla.score = 30;
@@ -65,13 +64,14 @@ function tubeyTubey(){
 	tubers.createMultiple(20, 'wifey');
 	game.time.events.loop(Phaser.Timer.SECOND * 2, tuberCreate);
 	function tuberCreate(){
-		startWidth = game.rnd.between(50, 580) //chooses a random number between 20 and 580 
-		watchOut = tubers.getFirstExists(false); //tells game to treat each instance of group as individual
-		watchOut.reset(startWidth, 600); //place a new sprite from group on (x,y)
-		watchOut.body.velocity.x =  game.rnd.between(-20, 20); //gives a random x speed
-		watchOut.body.velocity.y =  game.rnd.between(-20, -100);//give a random y speed
-		watchOut.scale.setTo(2); //doubles size of each sprite
-		watchOut.body.setSize(10, 10, 10, 10); //adjusts collision box
+		startWidth = game.rnd.between(50, 580); 
+		//watchOut = tubers.getFirstExists(false);
+		watchOut = Phaser.Math.getRandom(tubers.children.filter(function(e) {  return !e.alive;}));
+		watchOut.reset(startWidth, 600);
+		watchOut.body.velocity.x =  game.rnd.between(-20, 20);
+		watchOut.body.velocity.y =  game.rnd.between(-20, -100);
+		watchOut.scale.setTo(2);
+		watchOut.body.setSize(10, 10, 10, 10);
 		watchOut.body.bounce.setTo(1,1);
 
 	}
@@ -87,19 +87,18 @@ function rummyRumRum(){
 	rum.callAll('play', 'drink');
 	game.time.events.loop(Phaser.Timer.SECOND * 5, rumCreate);	
 	function rumCreate(){
-		getDrunk = rum.getFirstExists(false); //tells game to treat each instance of rum as individual
-		getDrunk.reset(startWidth, 600); //play a new sprite at (x,y)
+		getDrunk = rum.getFirstExists(false);
+		getDrunk.reset(startWidth, 600);
 		getDrunk.body.velocity.x = game.rnd.between(-20, 20);;
 		getDrunk.body.velocity.y = game.rnd.between(-40, -100);
-		//getDrunk.animations.play()
 		getDrunk.scale.setTo(2);
 		getDrunk.body.setSize(32, 32, 15, 15);
 	}
 }
 
 function tunes(){
-	backSong = game.add.audio('theme'); //background music
-	beach = game.add.audio('ocean', 0.9);  //ocean crashing for ambiance
+	backSong = game.add.audio('theme');
+	beach = game.add.audio('ocean', 0.9);
 	backSong.play();
 	beach.play();
 };
@@ -113,7 +112,7 @@ function theButton(){
 };
 
 function gimmeControl(){
-	cursors = game.input.keyboard.createCursorKeys(); //sets cursor variable to this which assigns control to keys
+	cursors = game.input.keyboard.createCursorKeys();
 };
 
 function keyStrokes(){
@@ -193,13 +192,13 @@ function getSome(){
 }
 
 function dieFloatyDie(){
-	tubers.forEach(function(t){ //kills tubers when they reach top of wave
+	tubers.forEach(function(t){
 		if(t.body.position.y < 300){
 			t.kill();
 		}
 	})
 
-	rum.forEach(function(r){ //kills rum bottles when they reach top of wave
+	rum.forEach(function(r){
 		if(r.body.position.y < 300){
 			r.kill();
 		}
