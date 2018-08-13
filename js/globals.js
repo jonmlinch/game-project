@@ -65,7 +65,8 @@ function tubeyTubey(){
 	game.time.events.loop(Phaser.Timer.SECOND * 2, tuberCreate);
 	function tuberCreate(){
 		startWidth = game.rnd.between(50, 580); 
-		watchOut = tubers.getFirstExists(false);
+		//watchOut = tubers.getFirstExists(false);
+		watchOut = Phaser.Math.getRandom(tubers.children.filter(function(e) {  return !e.alive;}));
 		watchOut.reset(startWidth, 600);
 		watchOut.body.velocity.x =  game.rnd.between(-20, 20);
 		watchOut.body.velocity.y =  game.rnd.between(-20, -100);
