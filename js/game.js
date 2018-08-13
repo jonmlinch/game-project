@@ -21,8 +21,8 @@ var gameOn = {
 		thrilla.body.velocity.x = 0;
 		thrilla.body.velocity.y = 20;
 		if(thrilla.y >= 601){
-				game.state.start('gameOver');
-			};
+			game.state.start('gameOver');
+		};
 		pause();
 		keyStrokes();
 		game.physics.arcade.collide(thrilla, tubers, wipeout);

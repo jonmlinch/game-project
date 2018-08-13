@@ -21,7 +21,7 @@ var cursors;
 //"global" functions
 
 function behindYou (){
-	game.world.setBounds(0, -200, 800, 800);
+	game.world.setBounds(0, 0, 800, 600);
 	game.inputEnabled = true;
 	
 	//game images
