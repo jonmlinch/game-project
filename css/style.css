@@ -1,15 +1,19 @@
 body {
 	background: url('../assets/img/wrinkled-paper.jpg');
-/*	background-repeat: no-repeat;
-*/	background-size: 100%;
+	background-size: 100%;
+	font-family: 'Permanent Marker', cursive;
 }
 
 canvas {
 	margin: 0 auto;
 }
 
+h2 {
+	width: 600px;
+	margin: 0 auto;
+}
+
 #title {
-	font-family: 'Permanent Marker', cursive;
 	text-align: center;
 	font-size: 60px;
 }
